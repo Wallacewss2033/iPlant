@@ -1,0 +1,25 @@
+ signIn = async () => {
+
+    const UserName = this.state.UserName;
+    const UserPassword = this.state.UserPassword;
+
+    const url = ('http://192.168.1.114/webservice2.php');
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        wstoken: 'any_token',
+        wsfunction: 'any_function',
+        moodlewsrestformat: 'json',
+        usuario: UserName,
+        senha: UserPassword,
+      })
+    });
+    let commits = await response.json(); // read response body and parse as JSON
+    alert(commits);
+
+
+    
